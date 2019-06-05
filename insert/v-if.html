@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if语句</title>
+    <script src="vue.min.js">
+
+    </script>
+</head>
+<body>
+<div id="e1">
+    <input v-model="message" v-if="seen"></input>
+    <template v-if="ok">
+        <ul>
+            <li><a v-bind:href="url">c</a></li>
+            <li><a v-bind:href="url">c2</a></li>
+        </ul>
+    </template>
+    <template v-else>
+        <ul>
+            <li><a v-bind:href="url">d</a></li>
+            <li><a v-bind:href="url">d2</a></li>
+        </ul>
+    </template>
+</div>
+<div id="app">
+    <div v-if="Math.random() > 0.5">
+        Sorry
+    </div>
+    <div v-else>
+        Not sorry
+    </div>
+</div>
+<div id="app1">
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+</div>
+<div id="app3">
+    <h1 v-show="ok">Hello!</h1>
+</div>
+<script>
+    var vm=new Vue({
+        el:"#e1",
+        data:{
+            message:"是否可见",
+            seen:true,
+            ok:false,
+            url:"http://www.baidu.com"
+        }
+    })
+
+//v-else 指令
+    //随机生成一个数字，判断是否大于0.5，然后输出对应信息：
+    new Vue({
+        el: '#app'
+    })
+//v-else-if 指令
+    new Vue({
+        el: '#app1',
+        data: {
+            type: 'C'
+        }
+    })
+    //v-show 指令
+    new Vue({
+        el: '#app',
+        data: {
+            ok: true
+        }
+    })
+</script>
+</body>
+</html>

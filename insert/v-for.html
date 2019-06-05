@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环语句</title>
+    <script src="vue.min.js">
+
+    </script>
+</head>
+<body>
+<div id="app">
+    <ol>
+        <li v-for="siteName in sites">
+            {{ siteName.name }}
+        </li>
+
+    </ol>
+    <ul>
+        <template v-for="site in sites">
+            <li>{{ site.name }}</li>
+            <li>--------------</li>
+        </template>
+    </ul>
+</div>
+<!--迭代数据-->
+<div id="app1">
+    <ul>
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+</div>
+<!--10以内的整数-->
+<div id="app2">
+    <ul>
+        <li v-for="n in 10">
+            {{ n }}
+        </li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            sites: [
+                { name: 'Runoob' },
+                { name: 'Google' },
+                { name: 'Taobao' }
+            ]
+        }
+    })
+    //迭代数据
+    new Vue({
+        el: '#app1',
+        data: {
+            object: {
+                name: '菜鸟教程',
+                url: 'http://www.runoob.com',
+                slogan: '学的不仅是技术，更是梦想！'
+            }
+        }
+    })
+    new Vue({
+        el:"#app2",
+
+    })
+</script>
+</body>
+</html>

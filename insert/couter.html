@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理器</title>
+    <script src="vue.min.js" type="text/javascript" ></script>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="counter+=1">增加 1</button>
+    <p>这个按钮被点击了 {{ counter }} 次。</p>
+</div>
+<div id="app1">
+    <!-- `greet` 是在下面定义的方法名 -->
+    <button v-on:click="greet">greet</button>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            counter:0
+        }
+    })
+    new Vue({
+        el:"#app1",
+        data:{
+            name: 'Vue'
+        },
+        methods:{
+            greet:function (event) {
+                // `this` 在方法里指当前 Vue 实例
+                alert('hello' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+alert(event.target.tagName)
+                }
+            }
+        }
+    })
+    // 也可以用 JavaScript 直接调用方法
+    app1.greet()
+</script>
+</body>
+</html>

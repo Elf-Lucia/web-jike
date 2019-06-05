@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>千米和米的转换</title>
+    <script src="vue.min.js" type="text/javascript" ></script>
+</head>
+<body>
+<div id="app">
+    千米：<input type="text" v-model="kilometers">
+    米：<input type="text" v-model="meters">
+</div>
+<p id="info"></p>
+<script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            kilometers : 0,
+            meters:0                 //定义初始值
+        },
+        computed:{},
+        watch: {
+            kilometers:function (val) {
+                this.kilometers=val;   //获取输入的值
+                this.meters=this.kilometers * 1000; //将输入的值转换
+            },
+            meters:function (val) {
+                this.kilometers=this.meters / 1000;
+                this.meters=val;
+
+            }
+
+        }
+    });
+    // $watch 是一个实例方法
+    vm.$watch('kilometers', function (newValue, oldValue) {//自动对应kilometers方法的值的变化
+        // 这个回调将在 vm.kilometers 改变后调用
+        document.getElementById ("info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+    })
+</script>
+</body>
+</html>

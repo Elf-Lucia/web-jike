@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <script src="vue.min.js">
+
+    </script>
+</head>
+<body>
+<div id="vue_det">
+    <h1>site : {{site}}</h1>
+    <h1>url : {{url}}</h1>
+    <h1>{{detail()}}</h1>/*{{ }} 用于输出对象属性和函数返回值。*/
+</div>
+<script type="text/javascript">
+  var vm=new Vue({
+      el:"#vue_det",//在 Vue 构造器中有一个el 参数，它是 DOM 元素中的 id
+      data:{//data 用于定义属性，实例中有三个属性分别为：site、url、alexa。
+          site:"vue目标",
+          url:"www.baidu.com",
+      },
+      methods:{//methods 用于定义的函数，可以通过 return 来返回函数值。
+          detail:function () {
+              return this.site+":具体地址"+this.url;
+          }
+      }
+  })
+
+
+</script>
+</body>
+</html>

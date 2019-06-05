@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs表单</title>
+    <script src="vue.min.js">
+
+    </script>
+</head>
+<body>
+<div id="app">
+    <p>input 元素：</p>
+    <input v-model="message" placeholder="编辑">
+    <p>消息是{{message}}</p>
+    <p>textarea 元素：</p>
+    <textarea v-model="message2" placeholder="输入文字"></textarea>
+    <p style="white-space: pre">{{message2}}}</p>
+</div>
+<!--复选框如果是一个为逻辑值，如果是多个则绑定到同一个数组：-->
+<div id="app2">
+    <p>单个复选框</p>
+    <input type="checkbox" id="checkbox" value="江苏" v-model="checksed">
+    <label for="checkbox">南京</label>
+    <span>选择的值{{checksed}}</span>
+    <p>多个复选框</p>
+    <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">
+    <label for="runoob">Runoob</label>
+    <input type="checkbox" id="google" value="google" v-model="checkedNames">
+    <label for="runoob">google</label>
+    <input type="checkbox" id="taobao" value="taobao" v-model="checkedNames">
+    <label for="runoob">taobao</label>
+    <br>
+    <span>选择的值:{{checkedNames}}</span>
+</div>
+<!--单选按钮-->
+<div id="app3">
+    <input type="radio" id="jike" value="极客" v-model="picked">
+    <label for="jike">极客</label>
+    <br>
+    <input type="radio" id="baidu" value="百度" v-model="picked">
+    <label for="baidu">百度</label>
+    <br>
+    <span>选中值为: {{ picked }}</span>
+</div>
+<!--select选择框-->
+<div id="app4">
+    <select v-model="selected" name="fruit">
+        <option value="">选择一个网站</option>
+        <option value="www.runoob.com">Runoob</option>
+        <option value="www.google.com">Google</option>
+    </select>
+
+    <div id="output">
+        选择的网站是: {{selected}}
+    </div>
+</div>
+<div id="app5">
+    <select v-model="selected" name="fruit" multiple>
+        <option value="">选择一个网站</option>
+        <option value="www.runoob.com">Runoob</option>
+        <option value="www.google.com">Google</option>
+    </select>
+
+    <div id="outputM">
+        选择的网站是: {{selected}}
+    </div>
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:"默认值",
+            message2:"默认网址",
+        }
+    })
+    new Vue({
+        el: '#app2',
+        data:{
+            checked:false,
+            checkedNames:[],
+            checksed:[]
+        }
+    })
+    new Vue({
+        el: '#app3',
+        data:{
+            picked : '百度'
+        }
+    })
+
+    new Vue({
+        el: '#app4',
+        data: {
+            selected: ''
+        }
+    })
+    new Vue({
+        el: '#app5',
+        data: {
+            selected: ''
+        }
+    })
+</script>
+
+</body>
+</html>

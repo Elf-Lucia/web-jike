@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch实现购物车</title>
+    <script src="vue.min.js" type="text/javascript" ></script>
+</head>
+<body>
+<div id="app">
+    <table>
+        <tr>
+            <th>序号</th>
+            <th>商品名称</th>
+            <th>商品价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="ipone in ip_json">
+            <td>{{ipone.id}}</td>
+            <td>{{ipone.name}}</td>
+            <td>{{ipone.price}}</td>
+            <td>
+                <button v-bind:disabled="ipone.count===0" v-on:click="ipone.count-=1">-</button>
+                <!--v-bind用来保证当count=0时不继续向下计算-->
+           {{ipone.count}}
+                <button v-on:click="ipone.count+=1">+</button>
+            </td>
+            <td>
+                <button v-on:click="ipone.count=0">移除</button>
+            </td>
+        </tr>
+        ${{totalPrice()}}
+    </table>
+</div>
+
+<script>
+
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            ip_json:[{
+                id: 1,
+                name: 'iphone 8',
+                price: 8099,
+                count: 1
+            },{
+                id: 2,
+                name: 'iphone 7',
+                price: 6099,
+                count: 1
+            },{
+                id: 3,
+                name: 'iphone 6',
+                price: 3099,
+                count: 1
+            }]
+        },
+        methods:{
+            totalPrice:function () {
+                var totalP=0;
+                for (var i=0;i<this.ip_json.length;i++) {
+                    totalP+=this.ip_json[i].price*this.ip_json[i].count
+                }
+                return totalP;
+            }
+        }
+
+
+    });
+
+
+</script>
+</body>
+</html>
